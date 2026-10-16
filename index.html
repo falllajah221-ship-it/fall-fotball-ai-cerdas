@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08090d">
+  <title>FALL STORE — Fast. Simple. Game On.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <header class="nav">
+    <a class="brand" href="#home" aria-label="FALL STORE">
+      <span class="brand-mark">F</span>
+      <span><strong>FALL</strong><small>STORE</small></span>
+    </a>
+    <nav id="navMenu">
+      <a href="#home">Home</a>
+      <a href="#topup">Top Up</a>
+      <a href="#orders">Cek Pesanan</a>
+      <a href="#help">Bantuan</a>
+    </nav>
+    <a class="nav-cta" href="#topup">Mulai Top Up <span>↗</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> DIGITAL GAME MARKETPLACE</div>
+        <h1>Top Up Game<br><span>Lebih Cepat.</span></h1>
+        <p>Top up game favoritmu dengan pengalaman yang cepat, aman, dan simpel. Dibuat untuk gamer yang ingin langsung main.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#topup">Top Up Sekarang <span>→</span></a>
+          <a class="btn ghost" href="#orders">Cek Pesanan</a>
+        </div>
+        <div class="stats">
+          <div><b>1K+</b><span>Transaksi</span></div>
+          <div><b>24/7</b><span>Online</span></div>
+          <div><b>Fast</b><span>Processing</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-top"><span>LIVE MARKET</span><i>●</i></div>
+        <div class="orbit">
+          <div class="orbit-core">F</div>
+          <span class="float-chip chip-1">FF</span>
+          <span class="float-chip chip-2">ML</span>
+          <span class="float-chip chip-3">VAL</span>
+          <span class="float-chip chip-4">PUBG</span>
+        </div>
+        <div class="hero-card-bottom"><span>Fast. Simple.</span><b>Game On.</b></div>
+      </div>
+    </section>
+
+    <section class="section" id="topup">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">01 / SELECT GAME</div>
+          <h2>Pilih game favoritmu</h2>
+        </div>
+        <span class="section-note">Tap a game to continue</span>
+      </div>
+      <div class="game-grid" id="gameGrid"></div>
+    </section>
+
+    <section class="section purchase-section" id="purchase">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">02 / TOP UP</div>
+          <h2>Lengkapi pesanan</h2>
+        </div>
+        <div class="selected-game" id="selectedGameLabel">Belum memilih game</div>
+      </div>
+
+      <div class="purchase-grid">
+        <div class="panel">
+          <div class="panel-title">Data akun</div>
+          <label>PLAYER ID</label>
+          <input id="playerId" inputmode="numeric" placeholder="Masukkan Player ID">
+          <label id="zoneLabel">SERVER / ZONE <span>(opsional)</span></label>
+          <input id="zone" placeholder="Contoh: 1234">
+          <div class="panel-title product-title">Pilih nominal</div>
+          <div class="product-grid" id="productGrid"></div>
+        </div>
+
+        <aside class="panel summary">
+          <div class="panel-title">Ringkasan pesanan</div>
+          <div class="summary-row"><span>Game</span><b id="sumGame">—</b></div>
+          <div class="summary-row"><span>Player ID</span><b id="sumPlayer">—</b></div>
+          <div class="summary-row"><span>Produk</span><b id="sumProduct">—</b></div>
+          <div class="summary-row"><span>Harga</span><b id="sumPrice">Rp 0</b></div>
+          <div class="summary-row"><span>Biaya</span><b id="sumFee">Rp 0</b></div>
+          <div class="total"><span>Total</span><strong id="sumTotal">Rp 0</strong></div>
+          <button class="btn primary full" id="checkoutBtn">Lanjutkan Pembayaran <span>→</span></button>
+          <small class="secure">🔒 Demo checkout • Jangan masukkan PIN/OTP/password.</small>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section payment-section" id="payment">
+      <div class="payment-wrap">
+        <div>
+          <div class="eyebrow">03 / PAYMENT</div>
+          <h2>Pembayaran QRIS</h2>
+          <p class="muted">Scan QRIS menggunakan aplikasi pembayaranmu. Pastikan nominal sesuai dengan total pesanan.</p>
+          <div class="payment-total" id="paymentTotal">Rp 0</div>
+          <div class="status-pill pending" id="paymentStatus">● MENUNGGU PEMBAYARAN</div>
+          <div class="steps">
+            <div class="step active" id="step1"><span>1</span><div><b>Pesanan dibuat</b><small>Order ID dibuat otomatis</small></div></div>
+            <div class="step" id="step2"><span>2</span><div><b>Menunggu pembayaran</b><small>Scan QRIS untuk membayar</small></div></div>
+            <div class="step" id="step3"><span>3</span><div><b>Verifikasi pembayaran</b><small>Status akan diperiksa</small></div></div>
+            <div class="step" id="step4"><span>4</span><div><b>Pesanan diproses</b><small>Demo selesai setelah verifikasi</small></div></div>
+          </div>
+        </div>
+        <div class="qris-card">
+          <div class="qris-head"><span>QRIS</span><button id="zoomQr">Perbesar ↗</button></div>
+          <button class="qr-image-btn" id="qrImageBtn" aria-label="Perbesar QRIS">
+            <img src="qris.jpg" alt="QRIS pembayaran FALL STORE">
+          </button>
+          <div class="qr-caption">Scan menggunakan aplikasi pembayaran yang mendukung QRIS.</div>
+          <div class="order-box">
+            <span>Nomor Pesanan</span><b id="orderId">FALL-—</b>
+          </div>
+          <div class="payment-actions">
+            <button class="btn ghost" id="copyTotal">Salin Total</button>
+            <button class="btn primary" id="paidBtn">Saya Sudah Membayar</button>
+          </div>
+          <button class="cancel-link" id="cancelBtn">Batalkan Pembayaran</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="orders">
+      <div class="section-head">
+        <div><div class="eyebrow">04 / TRACKING</div><h2>Cek pesanan</h2></div>
+      </div>
+      <div class="tracking panel">
+        <div class="track-search">
+          <input id="orderSearch" placeholder="Contoh: FALL-829431">
+          <button class="btn primary" id="trackBtn">Lacak</button>
+        </div>
+        <div id="trackResult" class="track-result hidden"></div>
+      </div>
+    </section>
+
+    <section class="section help" id="help">
+      <div class="help-card">
+        <div><div class="eyebrow">NEED HELP?</div><h2>Butuh bantuan?</h2><p>Gunakan nomor pesananmu saat menghubungi support FALL STORE.</p></div>
+        <a class="btn ghost" href="#home">Kembali ke Home →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><span class="brand-mark">F</span><div><b>FALL STORE</b><small>Fast. Simple. Game On.</small></div></div>
+    <div class="footer-links"><a href="#topup">Top Up</a><a href="#orders">Cek Pesanan</a><a href="#help">Bantuan</a><a href="#">Terms</a><a href="#">Privacy</a></div>
+    <p>© 2026 FALL STORE. Demo storefront.</p>
+  </footer>
+
+  <div class="modal hidden" id="qrModal">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">×</button>
+      <div class="eyebrow">QRIS PAYMENT</div>
+      <h3>Scan untuk membayar</h3>
+      <img src="qris.jpg" alt="QRIS pembayaran FALL STORE">
+      <strong id="modalTotal">Rp 0</strong>
+      <p>Pastikan nominal pembayaran sesuai sebelum melanjutkan.</p>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="verifyModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card verify-card">
+      <div class="loader"></div>
+      <div class="eyebrow">DEMO VERIFICATION</div>
+      <h3>Pembayaran sedang diverifikasi</h3>
+      <p>Jangan tutup halaman. Status pembayaran belum dianggap berhasil sampai proses verifikasi selesai.</p>
+      <div class="countdown" id="countdown">05:00</div>
+      <span class="status-pill verifying">● MENUNGGU VERIFIKASI</span>
+      <small>Simulasi 5 menit. Untuk produksi, ganti dengan webhook payment gateway.</small>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <button class="music" id="musicBtn" title="Putar musik">♫ <span>Music</span><b>OFF</b></button>
+  <audio id="music" preload="none" loop src=""></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
